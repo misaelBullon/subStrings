@@ -5,21 +5,23 @@ cadena = gets.chomp
 
 
 def substrings(string, diccionario)
-    my_hash = Hash.new
-    array = string.split()
-    count = 0
-    array.each do |string|
-        
-        diccionario.each do |dict|
-            if string === dict
-                count = count + 1
-                my_hash[string] = count
-            end 
+    lastIndex = string.length - 1
+    i = 0
+    array = string.split
+    puts array
+    array.each do |item|
+        i = 0
+        lastIndex = item.length - 1
+        while i < item.length do
+            palabra = item[i..lastIndex]
+            if diccionario.include?(palabra)
+                puts "#{palabra} encontrada"
+            end
+            i += 1
         end
     end
-    puts count
-    return my_hash
+
 end
 
-myHash = substrings(cadena, dictionary)
-p myHash
+substrings(cadena, dictionary)
+#p myHash
