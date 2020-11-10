@@ -1,14 +1,14 @@
 dictionary = ["below","down","go","going","horn","how","howdy","it","i","low","own","part","partner","sit"]
 
-puts "Ingrese una cadena de palabras"
-cadena = gets.chomp
+#puts "Ingrese una cadena de palabras"
+cadena = "Howdy partner, sit down! How's it going?"
 
 
 def substrings(string, diccionario)
     myHash = Hash.new
     lastIndex = string.length - 1
     i = 0
-    array = string.split
+    array = string.downcase.split
 
     array.each do |item|
         i = 0
@@ -21,17 +21,19 @@ def substrings(string, diccionario)
                 myHash[palabra] = +1
             end
             i += 1
+            
         end
         while j >= 0 do
             palabra = item[0..j]
             if diccionario.include?(palabra)
-                myHash[palabra] =  +1
+                myHash[palabra] =  +2
             end
             j -= 1
+            
         end
     end
     return myHash
 end
 
 my_hash = substrings(cadena, dictionary)
-p my_hash
+puts my_hash
